@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="product" *ngFor="let product of products">
+    <a [routerLink]="['product-detail', product.id]">
+      <img src="{{ product.imageUrl }}" alt="book" width="200" height="200" />
+    </a>
+    <div class="item-detail">
+      <span class="text-info">{{ product.title }}</span>
+      <span class="text-muted">{{ product.description }}</span>
+      <span class="text-dark">{{ product.price }}</span>
+    </div>
+    <div class="action">
+      <span class="foat-left" title="edit"
+        ><a [routerLink]="['edit-product', product.id]"
+          ><i class="fa fa-edit"></i></a
+      ></span>
+      <span class="float-right" title="delete" (click)="deleteProduct(product)"
+        ><i class="fa fa-trash"></i
+      ></span>
+    </div>
+  </div>
+</div>

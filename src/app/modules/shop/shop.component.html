@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="product" *ngFor="let product of products">
+    <a [routerLink]="['product-detail', product.id]">
+      <img src="{{ product.imageUrl }}" alt="book" width="200" height="200" />
+    </a>
+    <div class="item-detail">
+      <span class="text-info">{{ product.title }}</span>
+      <span class="text-muted">{{ product.description }}</span>
+      <span class="text-dark">{{ product.price }}</span>
+    </div>
+    <div class="row justify-content-center">
+      <span (click)="addToCart(product)" class="cart-btn"
+        ><i class="fa fa-shopping-cart"></i> Add to cart</span
+      >
+    </div>
+  </div>
+</div>

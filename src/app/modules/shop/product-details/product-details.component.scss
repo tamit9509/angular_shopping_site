@@ -1,0 +1,11 @@
+.product{
+  padding: 14px;
+  max-width: 25%;
+  cursor: pointer;
+}
+.product:hover{
+  box-shadow: 0px 0px 14px -8px;
+}
+.item-detail span{
+  display: block;
+}

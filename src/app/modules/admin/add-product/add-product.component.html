@@ -1,0 +1,38 @@
+<div class="container">
+  <h5>Add Product</h5>
+  <form [formGroup]="addProduct" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-12 form-group">
+        <label class="form-label">Title <sup>*</sup></label>
+        <input type="text" formControlName="title" class="form-control" />
+        <div *ngIf="submitted && addProduct.invalid">
+          <span class="error"
+            *ngIf="controls.title.invalid && controls.title.errors.required">{{validationMsg.Required}}</span>
+        </div>
+      </div>
+      <div class="col-12 form-group">
+        <label class="form-label">Image Url <sup>*</sup></label>
+        <input type="url" formControlName="imageUrl" class="form-control" />
+        <div *ngIf="submitted && addProduct.invalid">
+          <span class="error"
+            *ngIf="controls.imageUrl.invalid && controls.imageUrl.errors.required">{{validationMsg.Required}}</span>
+        </div>
+      </div>
+      <div class="col-12 form-group">
+        <label class="form-label">Price <sup>*</sup></label>
+        <input type="number" min="0" formControlName="price" class="form-control" />
+        <div *ngIf="submitted && addProduct.invalid">
+          <span class="error"
+            *ngIf="controls.price.invalid && controls.price.errors.required">{{validationMsg.Required}}</span>
+        </div>
+      </div>
+      <div class="col-12 form-group">
+        <label class="form-label">Description</label>
+        <textarea formControlName="description" class="form-control"></textarea>
+      </div>
+      <div class="col-12 form-group">
+        <button type="submit" class="btn btn-success">Add Product</button>
+      </div>
+    </div>
+  </form>
+</div>

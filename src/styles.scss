@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+
+.container{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  margin: 5px;
+}
+.product{
+  padding: 14px;
+  max-width: 25%;
+  cursor: pointer;
+}
+.product:hover{
+  box-shadow: 0px 0px 14px -8px;
+}
+.item-detail span{
+  display: block;
+}
+sup{
+  color: #c40f0f;
+  font-size: 100% !important ;
+}
+form{
+  box-shadow: 5px 5px 30px -10px;
+  padding: 35px;
+  margin: 10px;
+}
+label{
+  color: #3a485b;
+}
+input,textarea{
+  display: block;
+}
+.error{
+  color: #c40f0f;
+  font-size: 14px;
+}
+.action span a,.action span{
+  color: #909090;
+  cursor: pointer;
+}
+.action span a,.action span:hover{
+  color: #525151;
+}
