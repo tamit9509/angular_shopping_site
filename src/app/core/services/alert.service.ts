@@ -25,5 +25,7 @@ export class AlertService {
       title: message
     });
   }
-  confirmAlert() {}
+  confirmAlert() {
+
+  }
 }

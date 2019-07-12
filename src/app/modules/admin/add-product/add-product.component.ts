@@ -1,6 +1,6 @@
 import { APIS } from './../../../constants/apis.constants';
 import { HttpService } from 'src/app/core/services/http.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormValidationErrors } from './../../../constants/app.constants';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -19,8 +19,12 @@ export class AddProductComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    private httpService: HttpService
-  ) {}
+    private httpService: HttpService,
+    private router: Router
+  ) {
+    this.successHandler = this.successHandler.bind(this);
+    this.errorHandller = this.errorHandller.bind(this);
+  }
 
   ngOnInit() {
     this.formInit();
@@ -48,28 +52,29 @@ export class AddProductComponent implements OnInit {
     this.controls.price.setValue(obj.price);
     this.controls.description.setValue(obj.description);
   }
+
   onSubmit() {
     this.submitted = true;
     if (this.addProduct.invalid) {
       return;
     }
     if (this.productID) {
-      this.httpService
-        .putData(
-          `${APIS.AdminProduct}/${this.productID}`,
-          this.addProduct.value
-        )
-        .subscribe((result) => {});
+      this.httpService.putData(`${APIS.AdminProduct}/${this.productID}`, this.addProduct.value)
+        .subscribe(this.successHandler, this.errorHandller);
       return;
     }
-    this.httpService
-      .postData(APIS.AdminProduct, this.addProduct.value)
-      .subscribe((result) => {});
+    this.httpService.postData(APIS.AdminProduct, this.addProduct.value).subscribe(this.successHandler, this.errorHandller);
   }
+
   get controls() {
     return this.addProduct.controls;
   }
+  successHandler(result) {
+    console.log('asdcvasdvasdvsdvavsdfvasdvasd');
+    this.router.navigate(['/admin']);
+  }
   errorHandller(error) {
+    console.log('error');
     console.log(error);
   }
 }
